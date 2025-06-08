@@ -342,6 +342,7 @@
         <div class="hero-content">
             <div class="names">
                 Laura <span class="ampersand">&</span> Dominik
+                Biorą Ślub
             </div>
             <div class="decorative-line"></div>
             <div class="heart-icon">
@@ -458,7 +459,7 @@
 
         // Google Calendar function
         function createCalendarEvent() {
-            const startDate = '20251005T120000Z'; // October 5, 2025 12:00 PM UTC
+            const startDate = '20251005T100000Z'; // October 5, 2025 12:00 PM UTC
             const endDate = '20251006T020000Z';   // October 6, 2025 2:00 AM UTC
             const title = encodeURIComponent('Ślub Laury i Dominika');
             const location = encodeURIComponent('Parafia Św. Marii Magdaleny, Lubomia');
@@ -473,7 +474,9 @@
 
         // Google Maps redirect for church
         document.getElementById('church-card').addEventListener('click', function() {
-            window.open('https://g.co/kgs/awzjpQJ', '_blank');
+            const address = encodeURIComponent('Parafia Św. Marii Magdaleny w Lubomi');
+            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${address}`;
+            window.open(googleMapsUrl, '_blank');
         });
 
         // Google Maps redirect for reception location
