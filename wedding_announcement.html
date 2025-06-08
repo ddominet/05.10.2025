@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominik & Laura - October 5, 2025</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #faf7f4 0%, #f3ede7 25%, #ede4db 50%, #f8f5f2 75%, #faf7f4 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .petal {
+            position: absolute;
+            color: rgba(209, 180, 165, 0.3);
+            animation: float 15s infinite linear;
+            font-size: 1.5rem;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .main-content {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(139, 69, 19, 0.1);
+            padding: 4rem 3rem;
+            text-align: center;
+            border: 2px solid rgba(209, 180, 165, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(209, 180, 165, 0.05) 0%, transparent 70%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+        
+        .ornament {
+            color: #d1b4a5;
+            font-size: 3rem;
+            margin: 1rem 0;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        .names {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #8b4513, #d1b4a5, #cd853f, #daa520);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+            margin: 1rem 0;
+            text-shadow: 0 2px 4px rgba(139, 69, 19, 0.1);
+            position: relative;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .ampersand {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.8em;
+            margin: 0 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .date {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: #8b4513;
+            margin: 2rem 0;
+            font-weight: 500;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        .date::before,
+        .date::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1b4a5, transparent);
+        }
+        
+        .date::before {
+            left: -120px;
+        }
+        
+        .date::after {
+            right: -120px;
+        }
+        
+        .coming-soon {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #8b4513;
+            margin: 3rem 0 2rem 0;
+            font-style: italic;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .details-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #8b4513;
+            margin: 1rem 0 3rem 0;
+            opacity: 0.8;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hearts {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .heart {
+            color: #d1b4a5;
+            font-size: 1.5rem;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        .heart:nth-child(1) { animation-delay: 0s; }
+        .heart:nth-child(2) { animation-delay: 0.3s; }
+        .heart:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #8b4513;
+            opacity: 0.7;
+            font-style: italic;
+        }
+        
+        .decorative-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            border: 1px solid rgba(209, 180, 165, 0.3);
+            border-radius: 30px;
+        }
+        
+        .decorative-border::before,
+        .decorative-border::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #d1b4a5;
+            border-radius: 50%;
+        }
+        
+        .decorative-border::before {
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #faf7f4, #f3ede7);
+        }
+        
+        .decorative-border::after {
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #faf7f4, #f3ede7);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .date::before,
+            .date::after {
+                display: none;
+            }
+        }
+        
+        .save-date {
+            background: linear-gradient(135deg, #d1b4a5, #cd853f);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+            margin: 2rem 0;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .save-date:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.3);
+            background: linear-gradient(135deg, #cd853f, #daa520);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements" id="petals"></div>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="decorative-border"></div>
+            
+            <div class="ornament">
+                <i class="fas fa-leaf"></i>
+            </div>
+            
+            <h1 class="names">
+                Dominik <span class="ampersand">&</span> Laura
+            </h1>
+            
+            <div class="hearts">
+                <div class="heart">♥</div>
+                <div class="heart">♥</div>
+                <div class="heart">♥</div>
+            </div>
+            
+            <div class="date">October 5, 2025</div>
+            
+            <div class="coming-soon">More details coming soon...</div>
+            
+            <div class="details-text">
+                We're thrilled to share that we're getting married! 
+                Our special day is approaching, and we can't wait to celebrate 
+                this beautiful moment with our beloved family and friends.
+            </div>
+            
+            <button class="save-date" onclick="saveDate()">
+                Save the Date
+            </button>
+            
+            <div class="ornament">
+                <i class="fas fa-heart"></i>
+            </div>
+            
+            <div class="footer">
+                With love and excitement,<br>
+                Dominik & Laura
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating petals
+        function createPetals() {
+            const petalsContainer = document.getElementById('petals');
+            const petalSymbols = ['🌸', '🌺', '🌷', '🌹', '💐'];
+            
+            setInterval(() => {
+                if (document.querySelectorAll('.petal').length < 15) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.innerHTML = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    petal.style.animationDelay = Math.random() * 2 + 's';
+                    petalsContainer.appendChild(petal);
+                    
+                    setTimeout(() => {
+                        if (petal.parentNode) {
+                            petal.parentNode.removeChild(petal);
+                        }
+                    }, 20000);
+                }
+            }, 2000);
+        }
+        
+        function saveDate() {
+            const event = {
+                title: 'Dominik & Laura Wedding',
+                start: new Date('2025-10-05'),
+                description: 'Wedding celebration for Dominik & Laura'
+            };
+            
+            // Create calendar event URL (works for Google Calendar)
+            const startDate = '20251005';
+            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${startDate}/${startDate}&details=${encodeURIComponent(event.description)}`;
+            
+            // Open calendar
+            window.open(calendarUrl, '_blank');
+        }
+        
+        // Add subtle animations on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.main-content');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+        
+        // Initialize
+        createPetals();
+        
+        // Add sparkle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.color = '#d1b4a5';
+                sparkle.style.fontSize = '12px';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '1000';
+                sparkle.innerHTML = '✨';
+                sparkle.style.animation = 'sparkle 1s forwards';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    if (sparkle.parentNode) {
+                        sparkle.parentNode.removeChild(sparkle);
+                    }
+                }, 1000);
+            }
+        });
+        
+        // Add sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkle {
+                0% { transform: scale(0) rotate(0deg); opacity: 1; }
+                50% { transform: scale(1) rotate(180deg); opacity: 1; }
+                100% { transform: scale(0) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
